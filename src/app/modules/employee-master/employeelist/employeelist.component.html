@@ -1,0 +1,51 @@
+<div class="container">
+  <h1 class="text-center mt-3">Employee List</h1>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <input class="form-control" placeholder="Search..." [(ngModel)]="searchFilter" (input)="applyFilters()">
+    </div>
+    <div class="col-md-1">
+      <button (click)="clearsearch()" *ngIf="searchFilter" class="btn btn-sm btn-danger"> <i class="fa fa-times" aria-hidden="true"></i> </button>
+    </div>
+    <div class="col-md-5 text-right">
+      <button class="btn btn-sm btn-success" (click)="addEmployee()"><i class="fa fa-plus" aria-hidden="true"></i> Add
+        Employee</button>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th style="width: 5%; text-align: center;">#</th>
+          <th style="width: 20%;">Employee Name</th>
+          <th style="width: 20%;">Employee Email</th>
+          <th style="width: 15%;">Employee Phone</th>
+          <th style="width: 30%;">Employee Address</th>
+          <th style="width: 10%; text-align: center;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of pagedEmployees; let i = index">
+          <td style="text-align: center;">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.contactNo }}</td>
+          <td>{{ employee.address }}</td>
+          <td style="text-align: center;">
+            <button class="btn btn-sm btn-danger" (click)="deleteEmployee(i)">
+              <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="pagedEmployees.length <= 0">
+          <td colspan="6" style="text-align: center;" class="text-danger">No Data Found</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator [length]="filteredEmployees.length" [pageSize]="itemsPerPage" (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>

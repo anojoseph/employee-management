@@ -1,0 +1,77 @@
+<div class="login-container">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input type="text" matInput placeholder="Username" formControlName="username" required>
+          <mat-error *ngIf="f.username.errors">Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Password" formControlName="password" required>
+          <mat-error *ngIf="f.username.errors">Password is required</mat-error>
+        </mat-form-field>
+
+        <div class="button">
+          <div class="buttons">
+            <button type="submit" (click)="onLogin()"  class="btn btn-sm btn-primary" [disabled]="submitted">
+              <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Login
+            </button>
+            <button (click)="clear()" type="reset" class="btn btn-sm btn-danger">
+              <i class="fa fa-times" aria-hidden="true"></i> Clear
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<style>
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  mat-card-title {
+    margin-top: 20px;
+  }
+
+  mat-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 20px;
+  }
+
+  mat-card-content {
+    text-align: center;
+    margin: 10px;
+  }
+
+  mat-card-title {
+    text-align: center;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  @media (max-width: 600px) {
+    mat-card {
+      margin: 0 10px;
+    }
+  }
+</style>
