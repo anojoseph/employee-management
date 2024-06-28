@@ -49,6 +49,10 @@ This project is an Employee Management System built with Angular. It includes fu
 
 ## Usage
 
+## Login cred
+- username : touchworld
+- password : touchworldTech
+
 ### Adding Employees
 
 1. Click the "Add Employee" button.
